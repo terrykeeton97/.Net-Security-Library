@@ -8,7 +8,7 @@
 </p>
 
 # 📖 Project Overview
-.Net Security Library is a collection of methods for detecting potential security risks in .NET applications. It includes features such as anti-debugging, anti-dumping, and virtual machine detection, and can be used for identifying software dependencies or analyzing system security. The library is designed for use by developers who want to improve the security of their .NET applications or by security researchers who want to analyze and evaluate the security of .NET applications. With a simple and intuitive interface, the .Net Security Library is easy to use and provides powerful security features to protect against various security threats.
+.Net Security Library is a collection of basic anti-debug measures implemented as static methods in C#. These methods can be used to protect .NET applications from being reverse engineered, tampered with, or otherwise exploited. However, it is important to note that these measures are relatively simple and can be easily bypassed by skilled attackers. They should be used as one part of a comprehensive security strategy, rather than as a complete solution on their own.
 
 ## 🚀 Getting Started
 1. Open the solution file (.sln).
