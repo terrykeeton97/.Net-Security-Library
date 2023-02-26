@@ -2,9 +2,10 @@
 
 
 ![net security library github banner](https://user-images.githubusercontent.com/116961227/221431439-166dcd62-8496-40ca-9a16-0d8ae3416cb6.png)
-
-
-![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C# Badge"/>
+  <img src="https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white" alt=".NET Badge"/>
+</p>
 
 # 📖 Project Overview
 .Net Security Library is a collection of methods for detecting potential security risks in .NET applications. It includes features such as anti-debugging, anti-dumping, and virtual machine detection, and can be used for identifying software dependencies or analyzing system security. The library is designed for use by developers who want to improve the security of their .NET applications or by security researchers who want to analyze and evaluate the security of .NET applications. With a simple and intuitive interface, the .Net Security Library is easy to use and provides powerful security features to protect against various security threats.
