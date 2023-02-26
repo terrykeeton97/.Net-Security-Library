@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace Protect
 {
-    internal class Security
+    public class Security
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
@@ -36,7 +36,7 @@ namespace Protect
         /// Use with caution and carefully consider the risks and benefits of this method.
         /// </summary>
         /// <returns>True if a debugger was detected and stopped, false otherwise.</returns>
-        internal static bool DisableDebugger()
+        public static bool DisableDebugger()
         {
             bool isDebuggerPresent = false;
             CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
@@ -56,7 +56,7 @@ namespace Protect
         /// </summary>
         /// <param name="address">The address of the section of memory to erase.</param>
         /// <param name="size">The size of the section of memory to erase, in bytes.</param>
-        internal static void EraseSection(IntPtr address, int size)
+        public static void EraseSection(IntPtr address, int size)
         {
             IntPtr sz = (IntPtr)size;
             IntPtr dwOld = default;
@@ -71,7 +71,7 @@ namespace Protect
         /// by checking for the presence of specific modules in the process's loaded modules. 
         /// </summary>
         /// <returns>True if the current process contains a web sniffing tool, otherwise false.</returns>
-        internal static bool WebSniffers()
+        public static bool WebSniffers()
         {
             if (GetModuleHandle("HTTPDebuggerBrowser.dll") != IntPtr.Zero ||
                 GetModuleHandle("FiddlerCore4.dll") != IntPtr.Zero ||
@@ -89,7 +89,7 @@ namespace Protect
         /// by calling the CheckRemoteDebuggerPresent function and examining the return value. 
         /// </summary>
         /// <returns>True if the current process is being debugged, otherwise false.</returns>
-        internal static bool AntiDebug()
+        public static bool AntiDebug()
         {
             bool isDebuggerPresent = true;
             CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
@@ -104,7 +104,7 @@ namespace Protect
         /// by checking for the presence of the "SbieDll.dll" module in the process's loaded modules. 
         /// </summary>
         /// <returns>True if the current process is running under Sandboxie, otherwise false.</returns>
-        internal static bool Sandboxie()
+        public static bool Sandboxie()
         {
             if (GetModuleHandle("SbieDll.dll").ToInt32() != 0)
                 return true;
@@ -119,7 +119,7 @@ namespace Protect
         /// This method is useful for checking the accuracy of the system clock and the Thread.Sleep method.
         /// </summary>
         /// <returns>True if the delay was not accurate, otherwise false.</returns>
-        internal static bool Emulation()
+        public static bool Emulation()
         {
             long tickCount = Environment.TickCount;
             Thread.Sleep(500);
@@ -134,7 +134,7 @@ namespace Protect
         /// Detect whether the current system is running on a virtual machine.
         /// </summary>
         /// <returns>True if a virtual machine is detected, otherwise false.</returns>
-        internal static bool DetectVM()
+        public static bool DetectVM()
         {
             using (ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher("Select * from Win32_ComputerSystem"))
             using (ManagementObjectCollection managementObjectCollection = managementObjectSearcher.Get())
@@ -153,7 +153,7 @@ namespace Protect
         /// This method performs low-level memory manipulation to erase certain sections of a process's memory to make it more difficult to dump. 
         /// </summary>
         /// <returns>True if the memory manipulation was successful, otherwise false.</returns>
-        internal static bool AntiDump()
+        public static bool AntiDump()
         {
             try
             {
@@ -206,7 +206,7 @@ namespace Protect
         /// This information can be useful for detecting potential security risks, identifying software dependencies, or other purposes.
         /// </summary>
         /// <returns>True if the file was found, false otherwise.</returns>
-        internal static bool CheckDnSpyInstallation()
+        public static bool CheckDnSpyInstallation()
         {
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dnSpy", "dnSpy.xml");
             return File.Exists(filePath);
@@ -218,7 +218,7 @@ namespace Protect
         /// This information can be useful for detecting potential security risks, identifying software dependencies, or other purposes.
         /// </summary>
         /// <returns>True if the directory was found, false otherwise.</returns>
-        internal static bool CheckIDAProInstallation()
+        public static bool CheckIDAProInstallation()
         {
             string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Hex-Rays");
             return Directory.Exists(directoryPath);
