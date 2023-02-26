@@ -1,7 +1,7 @@
 <h1 align="center">.Net Security Library</h1>
 
+![net security library github banner](https://user-images.githubusercontent.com/116961227/221432116-1e85a8bd-797b-4eb5-96b1-c7f0c32c991d.png)
 
-![net security library github banner](https://user-images.githubusercontent.com/116961227/221431439-166dcd62-8496-40ca-9a16-0d8ae3416cb6.png)
 <p align="center">
   <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C# Badge"/>
   <img src="https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white" alt=".NET Badge"/>
