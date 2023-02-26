@@ -10,8 +10,7 @@
 </p>
 
 # 📖 Project Overview
-Process Scanner is a C++ tool that will scan the process for current loaded modules.
-It will give basic information such as the starting address, end address and module name.
+.Net Security Library is a collection of methods for detecting potential security risks in .NET applications. It includes features such as anti-debugging, anti-dumping, and virtual machine detection, and can be used for identifying software dependencies or analyzing system security. The library is designed for use by developers who want to improve the security of their .NET applications or by security researchers who want to analyze and evaluate the security of .NET applications. With a simple and intuitive interface, the .Net Security Library is easy to use and provides powerful security features to protect against various security threats.
 
 ## 🚀 Getting Started
 1. Open the solution file (.sln).
@@ -20,8 +19,7 @@ It will give basic information such as the starting address, end address and mod
 ## 🧪 Usage
 
 ```
-Enter the process name, including the .exe
-Example: chrome.exe
+IntPtr address = new IntPtr(0x12345678);
+int size = 512;
+Protect.EraseSection(address, size);
 ```
-## Demonstration
-https://user-images.githubusercontent.com/116961227/221386497-e1fe3f36-fd8c-4036-ba92-23463ffe3eeb.mp4
