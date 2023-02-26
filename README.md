@@ -14,6 +14,18 @@
 1. Open the solution file (.sln).
 2. Build the project in Realese (x86) or Release (x64).
 
+## ✔️ Methods
+- (bool) AntiDebug()
+- (bool) Sandboxie()
+- (bool) DetectVM()
+- (void) EraseSection(IntPtr address, int size)
+- (bool) WebSniffers()
+- (bool) Emulation()
+- (bool) AntiDump()
+- (bool) CheckDnSpyInstallation()
+- (bool) CheckIDAProInstallation()
+- (bool) DisableDebugger()
+
 ## 🧪 Usage
 
 ```
