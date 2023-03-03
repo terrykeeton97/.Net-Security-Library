@@ -18,7 +18,6 @@
 - (bool) AntiDebug()
 - (bool) Sandboxie()
 - (bool) DetectVM()
-- (void) EraseSection(IntPtr address, int size)
 - (bool) WebSniffers()
 - (bool) Emulation()
 - (bool) AntiDump()
