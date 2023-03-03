@@ -56,7 +56,7 @@ namespace Protect
         /// </summary>
         /// <param name="address">The address of the section of memory to erase.</param>
         /// <param name="size">The size of the section of memory to erase, in bytes.</param>
-        public static void EraseSection(IntPtr address, int size)
+        private static void EraseSection(IntPtr address, int size)
         {
             IntPtr sz = (IntPtr)size;
             IntPtr dwOld = default;
