@@ -38,7 +38,7 @@ namespace Protect
         /// <returns>True if a debugger was detected and stopped, false otherwise.</returns>
         public static bool DisableDebugger()
         {
-            bool isDebuggerPresent = false;
+            bool isDebuggerPresent;
             CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
 
             if (isDebuggerPresent)
@@ -58,8 +58,8 @@ namespace Protect
         /// <param name="size">The size of the section of memory to erase, in bytes.</param>
         private static void EraseSection(IntPtr address, int size)
         {
-            IntPtr sz = (IntPtr)size;
-            IntPtr dwOld = default;
+            var sz = (IntPtr)size;
+            var dwOld = default;
             VirtualProtect(address, sz, (IntPtr)0x40, ref dwOld);
             ZeroMemory(address, sz);
             IntPtr temp = default;
@@ -91,7 +91,7 @@ namespace Protect
         /// <returns>True if the current process is being debugged, otherwise false.</returns>
         public static bool AntiDebug()
         {
-            bool isDebuggerPresent = true;
+            bool isDebuggerPresent;
             CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
             if (isDebuggerPresent)
                 return true;
@@ -121,9 +121,10 @@ namespace Protect
         /// <returns>True if the delay was not accurate, otherwise false.</returns>
         public static bool Emulation()
         {
-            long tickCount = Environment.TickCount;
+            var tickCount = Environment.TickCount;
             Thread.Sleep(500);
-            long tickCount2 = Environment.TickCount;
+            var tickCount2 = Environment.TickCount;
+            
             if ((tickCount2 - tickCount) < 500L)
                 return true;
 
@@ -136,13 +137,13 @@ namespace Protect
         /// <returns>True if a virtual machine is detected, otherwise false.</returns>
         public static bool DetectVM()
         {
-            using (ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher("Select * from Win32_ComputerSystem"))
-            using (ManagementObjectCollection managementObjectCollection = managementObjectSearcher.Get())
-                foreach (ManagementBaseObject managementBaseObject in managementObjectCollection)
+            using (var managementObjectSearcher = new ManagementObjectSearcher("Select * from Win32_ComputerSystem"))
+            using (var managementObjectCollection = managementObjectSearcher.Get())
+                foreach (var managementBaseObject in managementObjectCollection)
                     if ((managementBaseObject["Manufacturer"].ToString().ToLower() == "microsoft corporation" && managementBaseObject["Model"].ToString().ToUpperInvariant().Contains("VIRTUAL")) || managementBaseObject["Manufacturer"].ToString().ToLower().Contains("vmware") || managementBaseObject["Model"].ToString() == "VirtualBox")
                         return true;
 
-            foreach (ManagementBaseObject managementBaseObject2 in new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_VideoController").Get())
+            foreach (var managementBaseObject2 in new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_VideoController").Get())
                 if (managementBaseObject2.GetPropertyValue("Name").ToString().Contains("VMware") && managementBaseObject2.GetPropertyValue("Name").ToString().Contains("VBox"))
                     return true;
 
@@ -208,7 +209,7 @@ namespace Protect
         /// <returns>True if the file was found, false otherwise.</returns>
         public static bool CheckDnSpyInstallation()
         {
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dnSpy", "dnSpy.xml");
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dnSpy", "dnSpy.xml");
             return File.Exists(filePath);
         }
 
@@ -220,7 +221,7 @@ namespace Protect
         /// <returns>True if the directory was found, false otherwise.</returns>
         public static bool CheckIDAProInstallation()
         {
-            string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Hex-Rays");
+            var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Hex-Rays");
             return Directory.Exists(directoryPath);
         }
     }
